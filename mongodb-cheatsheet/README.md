@@ -6,37 +6,37 @@
 show dbs
 ```
 
-## Show Current database
+### Show Current database
 
 ```
 db
 ```
 
-## Select/Create Database
+### Select/Create Database
 
 ```
 use RecordsDB
 ```
 
-## Drop
+### Drop
 
 ```
 db.dropDatabase()
 ```
 
-## Create Collection
+### Create Collection
 
 ```
 db.createCollection('RecordsDB')
 ```
 
-## Show Collections
+### Show Collections
 
 ```
 show collections
 ```
 
-## Insert Document/Row (One at a time)
+### Insert Document/Row (One at a time)
 
 ```
 db.RecordsDB.insertOne({
@@ -46,7 +46,7 @@ db.RecordsDB.insertOne({
 });
 ```
 
-## Insert Multiple Documents/Rows
+### Insert Multiple Documents/Rows
 
 ```
 db.RecordsDB.insertMany([
@@ -60,7 +60,7 @@ db.RecordsDB.insertMany([
     ])
 ```
 
-## Get All Documents/Rows
+### Get All Documents/Rows
 
 ```
 db.RecordsDB.find()
@@ -68,4 +68,87 @@ db.RecordsDB.find()
 Or
 ```
 db.getCollection("RecordsDB").find()
+```
+
+### Find Documents/Rows
+
+```
+db.RecordsDB.find({name: "Yahya"})
+```
+
+### Sort Documents/Rows
+
+```
+# Descending
+db.RecordsDB.find().sort({name: -1})
+
+# Ascending
+db.RecordsDB.find().sort({name: 1})
+```
+
+### Limit Documents/Rows
+
+```
+db.RecordsDB.find().limit(2)
+```
+
+### Count Documents/Rows
+
+```
+db.RecordsDB.find().count()
+db.RecordsDB.find({name: "Yahya"}).count()
+```
+
+### Sort and Limit Documents/Rows
+
+```
+db.RecordsDB.find().limit(2).sort({name: 1})
+```
+
+### Find One Document/Row
+
+```
+db.RecordsDB.findOne({name: "Yahya"})
+```
+
+### Find Specific Fields
+
+```
+db.RecordsDB.find({name: "Ahmad"}, {
+  name: 1,
+  career: 1
+})
+```
+
+### Foreach
+
+```
+db.RecordsDB.find().forEach(function(record) {
+    print("Developer Name: " + record.name);
+    print("-----------------------------");
+})
+```
+
+### Update Specific Field
+
+```
+db.RecordsDB.updateOne({name: "Yahya"}, {$set:{career: "iOS Developer"}})
+```
+
+### Delete Document/Row
+
+```
+db.RecordsDB.deleteOne({name:"Ahmad"})
+```
+To delete many document/rows, use `deleteMany`.
+
+### Rename Field
+
+```
+db.RecordsDB.update({name: "Ahmad"},
+{
+  $rename: {
+    Tools: "Tech Stack"
+  }
+})
 ```
