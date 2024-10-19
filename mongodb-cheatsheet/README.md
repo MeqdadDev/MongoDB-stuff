@@ -152,3 +152,21 @@ db.RecordsDB.update({name: "Ahmad"},
   }
 })
 ```
+
+### Create an Index on the 'name' Field
+
+```
+db.RecordsDB.createIndex({name: 1})
+```
+
+### Get All Indexes in a Collection
+
+```
+db.RecordsDB.getIndexes()
+```
+
+### Query Execution Plan with Stats
+
+```
+db.RecordsDB.find({"name": "Yahya"}).explain("executionStats");
+```
