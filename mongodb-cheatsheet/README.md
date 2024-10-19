@@ -170,3 +170,9 @@ db.RecordsDB.getIndexes()
 ```
 db.RecordsDB.find({"name": "Yahya"}).explain("executionStats");
 ```
+
+### Drop an Index
+
+```
+db.RecordsDB.dropIndex({name: 1})
+```
